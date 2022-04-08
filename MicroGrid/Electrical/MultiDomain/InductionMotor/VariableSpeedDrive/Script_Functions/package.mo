@@ -1,0 +1,3 @@
+within MicroGrid.Electrical.MultiDomain.InductionMotor.VariableSpeedDrive;
+package Script_Functions
+end Script_Functions;
