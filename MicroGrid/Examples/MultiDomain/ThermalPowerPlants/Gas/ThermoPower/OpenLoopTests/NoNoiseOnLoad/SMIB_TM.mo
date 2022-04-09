@@ -1,7 +1,7 @@
 within MicroGrid.Examples.MultiDomain.ThermalPowerPlants.Gas.ThermoPower.OpenLoopTests.NoNoiseOnLoad;
 model SMIB_TM "Open-Loop Test of the Single-Shaft Gas Turbine Model driving generator of the SMIB network"
   import MicroGrid;
-  extends Electrical.Networks.SMIB.Partial.SMIB_Partial_NoNoise(
+  extends MicroGrid.Examples.BaseClasses.SMIB.Partial.SMIB_Partial_NoNoise(
     transformer(V_b=13.8e3, Vn=13.8e3),
     LOAD(V_b=13.8e3),
     GEN1(V_b=13.8e3),
@@ -41,7 +41,7 @@ model SMIB_TM "Open-Loop Test of the Single-Shaft Gas Turbine Model driving gene
     v_0=pf_results.voltages.V1,
     angle_0=pf_results.voltages.A1)
     annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
-  Electrical.Networks.SMIB.Records.PF_050 pf_results
+  MicroGrid.Examples.BaseClasses.SMIB.Records.PF_050 pf_results
     annotation (Placement(transformation(extent={{-136,50},{-116,70}})));
 equation
   connect(GEN1.p, genGroup.pwPin) annotation (Line(points={{-42,0},{-49,0}}, color={0,0,255}));

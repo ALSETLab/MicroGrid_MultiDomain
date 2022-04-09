@@ -5,5 +5,5 @@ SinglePhaseInductionMotor
 PowerElectronicsInterface
 ThermostaticallyControlledLoads
 DistrictHeating
-MPC
+SMIB
 BaseClasses

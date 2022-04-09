@@ -1,5 +1,6 @@
 within MicroGrid.Examples.MultiDomain.InductionMotor;
 model Combined_Electrical_ThermoFluid_MotorTypel
+  import MicroGrid;
     extends Modelica.Icons.Example;
 
   inner OpenIPSL.Electrical.SystemBase SysData(S_b=100000000,
@@ -10,13 +11,12 @@ model Combined_Electrical_ThermoFluid_MotorTypel
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-184,32})));
-  Electrical.MultiDomain.InductionMotor.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC_uninitialized
+  Electrical.InductionMotor.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC_uninitialized
     aC_2_DC_and_DC_2_AC(
     V_b=380,
     P_0=50000000,
     Q_0=10000000,
-    Cdc=0.02)
-    annotation (Placement(transformation(extent={{-96,12},{-56,52}})));
+    Cdc=0.02) annotation (Placement(transformation(extent={{-96,12},{-56,52}})));
   OpenIPSL.Electrical.Buses.Bus Grid(
     V_b=380,
     v_0=1.04169,
@@ -45,7 +45,7 @@ model Combined_Electrical_ThermoFluid_MotorTypel
         origin={22,32})));
   Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor
     annotation (Placement(transformation(extent={{-16,22},{4,42}})));
-  Electrical.MultiDomain.InductionMotor.VariableSpeedDrive.Controls.VoltsHertz_Controller
+  Electrical.InductionMotor.VariableSpeedDrive.Controls.VoltsHertz_Controller
     volts_Hertz_Control(
     V_b=380,
     Kf=0.7/188.275,
@@ -60,7 +60,7 @@ model Combined_Electrical_ThermoFluid_MotorTypel
   inner Modelica.Fluid.System system
     annotation (Placement(transformation(extent={{174,70},{194,90}})));
 
-  Electrical.MultiDomain.InductionMotor.ThreePhase.PSAT.MotorTypel_MultiDomain_Full
+  MicroGrid.MultiDomain.InductionMotor.ThreePhase.PSAT.MotorTypel_MultiDomain_Full
     MotorTypel(
     V_b=380,
     P_0(displayUnit="W") = 35836.1,
@@ -73,11 +73,10 @@ model Combined_Electrical_ThermoFluid_MotorTypel
     Xm=2.4,
     Hm=0.8,
     M_b=500000,
-    N=2)
-    annotation (Placement(transformation(extent={{-26,22},{-46,42}})));
-  Electrical.MultiDomain.InductionMotor.VariableSpeedDrive.Controls.pump_controller
-    pump_controller(kp=1, mflow_2_speed=188.275/243.912) annotation (
-      Placement(transformation(extent={{-150,-40},{-110,0}})));
+    N=2) annotation (Placement(transformation(extent={{-26,22},{-46,42}})));
+  Electrical.InductionMotor.VariableSpeedDrive.Controls.pump_controller
+    pump_controller(kp=1, mflow_2_speed=188.275/243.912)
+    annotation (Placement(transformation(extent={{-150,-40},{-110,0}})));
   Modelica.Fluid.Machines.Pump pump(
     redeclare package Medium =
         Modelica.Media.Water.ConstantPropertyLiquidWater,

@@ -31,8 +31,8 @@ model ResidentialLoad03
     p_supply=500000,
     p_return=500000)
     annotation (Placement(transformation(extent={{70,70},{90,90}})));
-  Electrical.MultiDomain.ThermalElectrical.AggregateEnergyResidence AggregLoad(S_b=
-        SysData.S_b)
+  MicroGrid.MultiDomain.HighLevelGrid.ThermalElectrical.AggregateEnergyResidence
+    AggregLoad(S_b=SysData.S_b)
     annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
   OpenIPSL.Electrical.Buses.Bus bus(
     v_0=1,
@@ -65,20 +65,19 @@ model ResidentialLoad03
   Electrical.Renewables.WECC.PV_Module_for_irradiance
     pV_Module_for_irradiance(use_irradiance_in=true, angle_0=0.02574992)
     annotation (Placement(transformation(extent={{-60,50},{-40,70}})));
-  Electrical.Renewables.WECC.Irradiance_to_Power irradiance_to_Power(
-      use_irradiance_out=true)
+  MicroGrid.Electrical.Renewables.WECC.GridFollowing.Irradiance_to_Power
+    irradiance_to_Power(use_irradiance_out=true)
     annotation (Placement(transformation(extent={{-90,70},{-70,90}})));
-  MicroGrid.Thermal_Power.ThermalFluid_Sources.Models.Gas_Turbines.Gen_GT
-    gen_GT(M_b=10000) annotation (Placement(transformation(extent={{-40,
-            -60},{-20,-40}})));
+  MicroGrid.MultiDomain.Generation_Groups.SMIB.Gen_GT2 gen_GT(M_b=10000)
+    annotation (Placement(transformation(extent={{-40,-60},{-20,-40}})));
   Modelica.Blocks.Sources.Constant const(k=1) annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-84,-50})));
-  MicroGrid.Thermal_Power.ThermalFluid_Sources.Models.Gas_Turbines.ThermalPower_GasTurbine2
-    thermalPower_GasTurbine2_1 annotation (Placement(transformation(
-          extent={{-66,-60},{-46,-40}})));
+  MicroGrid.Thermal_Power.Gas.GTModels.ThermalPower_GasTurbine2
+    thermalPower_GasTurbine2_1
+    annotation (Placement(transformation(extent={{-66,-60},{-46,-40}})));
   ThermalPower.FlueGas.HeatExchangers.Plate_gas2ph hex(redeclare package
               TwoPhaseMedium =
         Modelon.Media.PreDefined.TwoPhase.WaterIF97, redeclare package

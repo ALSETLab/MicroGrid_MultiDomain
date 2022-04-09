@@ -2,7 +2,7 @@ within MicroGrid.Examples.MultiDomain.ThermalPowerPlants.Gas.ThermoPower.ThermoP
 model SMIB_Gov "Network model with no generator controls"
   import MicroGrid;
   import ThermoPower;
-  extends Electrical.Networks.SMIB.Partial.SMIB_Partial_NoNoise(
+  extends MicroGrid.Examples.BaseClasses.SMIB.Partial.SMIB_Partial_NoNoise(
     transformer(V_b=13.8e3, Vn=13.8e3),
     LOAD(V_b=13.8e3),
     GEN1(V_b=13.8e3),
@@ -52,7 +52,8 @@ model SMIB_Gov "Network model with no generator controls"
         extent={{-6,-6},{6,6}},
         rotation=-90,
         origin={-54,-34})));
-  Electrical.Networks.SMIB.Records.PF_050 pf_results annotation (Placement(transformation(extent={{-136,50},{-116,70}})));
+  MicroGrid.Examples.BaseClasses.SMIB.Records.PF_050 pf_results
+    annotation (Placement(transformation(extent={{-136,50},{-116,70}})));
 equation
   connect(add.u1, step.y) annotation (Line(points={{-64,-68},{-54,-68},{-54,-77},{-48.7,-77}}, color={0,0,127}));
   connect(genGroup.pwPin, GEN1.p) annotation (Line(points={{-49,0},{-49,0},{-42,0}}, color={0,0,255}));

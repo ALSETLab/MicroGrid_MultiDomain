@@ -2,7 +2,7 @@ within MicroGrid.Examples.MultiDomain.ThermalPowerPlants.Gas.ThermoPower.GGOVGov
 model SMIB_NoGov "Multi-Domain Network model, no generator controls, no governor"
   import MicroGrid;
   import ThermoPower;
-  extends Electrical.Networks.SMIB.Partial.SMIB_Partial_Noise(
+  extends MicroGrid.Examples.BaseClasses.SMIB.Partial.SMIB_Partial_Noise(
     transformer(V_b=13.8e3, Vn=13.8e3),
     LOAD(V_b=13.8e3),
     GEN1(V_b=13.8e3),
@@ -40,7 +40,8 @@ model SMIB_NoGov "Multi-Domain Network model, no generator controls, no governor
     P_0=pf_results.machines.P1_1,
     v_0=pf_results.voltages.V1,
     angle_0=pf_results.voltages.A1) annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
-  Electrical.Networks.SMIB.Records.PF_075 pf_results annotation (Placement(transformation(extent={{-136,50},{-116,70}})));
+  MicroGrid.Examples.BaseClasses.SMIB.Records.PF_075 pf_results
+    annotation (Placement(transformation(extent={{-136,50},{-116,70}})));
   inner Modelica.Blocks.Noise.GlobalSeed globalSeed(useAutomaticSeed=true) annotation (Placement(transformation(extent={{-28,-90},{-8,-70}})));
   Modelica.Blocks.Sources.Constant const(k=0.649458) annotation (Placement(transformation(extent={{-152,2},{-136,18}})));
 equation

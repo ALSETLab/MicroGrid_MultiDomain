@@ -10,13 +10,12 @@ partial model VSC_partial
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-70,0})));
-  Electrical.MultiDomain.InductionMotor.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC_uninitialized
+  Electrical.InductionMotor.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC_uninitialized
     AC_2_DC_and_DC_2_AC(
     P_0=0,
     Q_0=0,
     Rdc=0.001,
-    Cdc=0.02)
-    annotation (Placement(transformation(extent={{6,-20},{46,20}})));
+    Cdc=0.02) annotation (Placement(transformation(extent={{6,-20},{46,20}})));
   OpenIPSL.Electrical.Branches.PwLine pwLine(
     R=0.001,
     X=0.01,

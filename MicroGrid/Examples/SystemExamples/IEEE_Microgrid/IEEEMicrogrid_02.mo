@@ -143,10 +143,8 @@ model IEEEMicrogrid_02
         extent={{-16,-16},{16,16}},
         rotation=0,
         origin={280,280})));
-  replaceable
-    MicroGrid.Thermal_Power.ThermalFluid_Sources.Models.Gas_Turbines.ThermalPower_GasTurbine
-    turbine constrainedby
-    MicroGrid.Thermal_Power.ThermalFluid_Sources.Models.Partial.Turbine
+  replaceable MicroGrid.Thermal_Power.Gas.GTModels.ThermalPower_GasTurbine
+    turbine constrainedby MicroGrid.Thermal_Power.Gas.Partial.Turbine
     annotation (Placement(transformation(
         extent={{-18,-18},{18,18}},
         rotation=180,
@@ -157,9 +155,9 @@ model IEEEMicrogrid_02
         rotation=0,
         origin={470,280})));
   replaceable
-    MicroGrid.Electrical.MultiDomain.Gas_and_Diesel_Generators.Diesel_Generator
+    MicroGrid.Electrical.TemporaryFernando.Gas_and_Diesel_Generators.Diesel_Generator
     diesel constrainedby
-    MicroGrid.Electrical.MultiDomain.BaseClasses.DieselBase
+    MicroGrid.Electrical.TemporaryFernando.BaseClasses.DieselBase
     annotation (Placement(transformation(extent={{462,122},{498,158}})));
   OpenIPSL.Electrical.Branches.PwLine DG_line(
     R=0.2686,
@@ -218,16 +216,15 @@ model IEEEMicrogrid_02
         origin={460,-60})));
   MicroGrid.Examples.SystemExamples.Data.Records.pf_DATA pf_DATA
     annotation (Placement(transformation(extent={{-142,-244},{-80,-190}})));
-  MicroGrid.Thermal_Power.ThermalFluid_Sources.Models.Gas_Turbines.Gen_GT
-    gen_GT(
+  MicroGrid.MultiDomain.Generation_Groups.SMIB.Gen_GT2 gen_GT(
     V_b=400,
     M_b=1000000,
     Q_0=585000,
     P_0=5000000,
     v_0=1,
-    angle_0=0) annotation (Placement(transformation(extent={{374,270},{
-            354,290}})));
-  MicroGrid.Electrical.Renewables.WECC.Irradiance_to_Power
+    angle_0=0)
+    annotation (Placement(transformation(extent={{374,270},{354,290}})));
+  MicroGrid.Electrical.Renewables.WECC.GridFollowing.Irradiance_to_Power
     irradiance_to_Power(derating_factor=1, use_irradiance_out=true)
     annotation (Placement(transformation(extent={{220,140},{240,160}})));
   OpenIPSL.Electrical.Banks.PSSE.Shunt capacitor_bank(G=0, B=0.02/4)
@@ -304,9 +301,8 @@ equation
           -40},{0,-60},{-20,-60}}, color={0,0,255}));
   connect(substation_line_3.n, SB_bus.p) annotation (Line(points={{39.2,-80},{0,
           -80},{0,-60},{-20,-60}}, color={0,0,255}));
-  connect(SB_CENTRAL_Fault.p, SB_bus.p) annotation (Line(points={{40.3333,
-          -10},{0,-10},{0,-60},{-20,-60}},
-                                     color={0,0,255}));
+  connect(SB_CENTRAL_Fault.p, SB_bus.p) annotation (Line(points={{40.3333,-10},
+          {0,-10},{0,-60},{-20,-60}},color={0,0,255}));
   connect(substation_line_1.p, SB_bus.p) annotation (Line(points={{-59.2,-40},{-40,
           -40},{-40,-60},{-20,-60}}, color={0,0,255}));
   connect(substation_line_4.p, SB_bus.p) annotation (Line(points={{-59.2,-80},{-40,
@@ -315,8 +311,8 @@ equation
           -40},{-100,-60},{-120,-60}}, color={0,0,255}));
   connect(substation_line_4.n, LV_bus.p) annotation (Line(points={{-80.8,-80},{-100,
           -80},{-100,-60},{-120,-60}}, color={0,0,255}));
-  connect(LV_SB_Fault.p, LV_bus.p) annotation (Line(points={{-81.6667,
-          -10},{-100,-10},{-100,-60},{-120,-60}},
+  connect(LV_SB_Fault.p, LV_bus.p) annotation (Line(points={{-81.6667,-10},{
+          -100,-10},{-100,-60},{-120,-60}},
                                        color={0,0,255}));
   connect(load.p, LOAD_bus.p)
     annotation (Line(points={{440,-60},{280,-60}}, color={0,0,255}));

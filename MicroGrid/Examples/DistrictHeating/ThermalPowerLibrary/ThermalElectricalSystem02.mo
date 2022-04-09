@@ -1,5 +1,6 @@
 within MicroGrid.Examples.DistrictHeating.ThermalPowerLibrary;
 model ThermalElectricalSystem02
+  import MicroGrid;
   extends Modelica.Icons.Example;
   parameter Integer n_consumer = 1;
   parameter Modelica.Units.SI.Temperature T_supply=343.15;
@@ -82,7 +83,7 @@ model ThermalElectricalSystem02
     pout_start=init.p_supply,
     steadyState=true) annotation (Placement(transformation(extent={{-84,
             -60},{-64,-40}})));
-  Electrical.MultiDomain.InductionMotor.SinglePhase.DPIM dPIM(
+  Electrical.InductionMotor.SinglePhase.DPIM dPIM(
     V_b=380,
     init=2,
     Lmainr=0.000588,
@@ -113,13 +114,12 @@ model ThermalElectricalSystem02
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-114,66})));
-  Electrical.MultiDomain.InductionMotor.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC_uninitialized
+  Electrical.InductionMotor.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC_uninitialized
     aC_2_DC_and_DC_2_AC(
     V_b=380,
     P_0=50000000,
     Q_0=10000000,
-    Cdc=0.02)
-    annotation (Placement(transformation(extent={{-26,46},{14,86}})));
+    Cdc=0.02) annotation (Placement(transformation(extent={{-26,46},{14,86}})));
   OpenIPSL.Electrical.Buses.Bus Grid(
     V_b=380,
     v_0=1.04169,
@@ -141,7 +141,7 @@ model ThermalElectricalSystem02
     t2=101,
     R=0.01,
     X=0.01) annotation (Placement(transformation(extent={{-72,80},{-52,100}})));
-  Electrical.MultiDomain.InductionMotor.VariableSpeedDrive.Controls.VoltsHertz_Controller
+  Electrical.InductionMotor.VariableSpeedDrive.Controls.VoltsHertz_Controller
     volts_Hertz_Control(
     V_b=380,
     Kf=0.7/188.275,
@@ -152,7 +152,7 @@ model ThermalElectricalSystem02
     annotation (Placement(transformation(extent={{-26,-6},{10,34}})));
   Modelica.Blocks.Sources.RealExpression Water_Flow_Ref(y=1)
     annotation (Placement(transformation(extent={{-110,16},{-90,36}})));
-  Electrical.MultiDomain.InductionMotor.ThreePhase.PSAT.MotorTypel_MultiDomain_Full
+  MicroGrid.MultiDomain.InductionMotor.ThreePhase.PSAT.MotorTypel_MultiDomain_Full
     MotorTypel(
     V_b=380,
     P_0(displayUnit="W") = 35836.1,
@@ -165,11 +165,10 @@ model ThermalElectricalSystem02
     Xm=2.4,
     Hm=0.8,
     M_b=500000,
-    N=2)
-    annotation (Placement(transformation(extent={{44,56},{24,76}})));
-  Electrical.MultiDomain.InductionMotor.VariableSpeedDrive.Controls.pump_controller
-    pump_controller(kp=1, mflow_2_speed=188.275/2)       annotation (
-      Placement(transformation(extent={{-80,-6},{-40,34}})));
+    N=2) annotation (Placement(transformation(extent={{44,56},{24,76}})));
+  Electrical.InductionMotor.VariableSpeedDrive.Controls.pump_controller
+    pump_controller(kp=1, mflow_2_speed=188.275/2)
+    annotation (Placement(transformation(extent={{-80,-6},{-40,34}})));
   Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor
     annotation (Placement(transformation(extent={{54,56},{74,76}})));
   Modelica.Mechanics.Rotational.Components.Inertia inertia_of_the_pump(J=2.6485,

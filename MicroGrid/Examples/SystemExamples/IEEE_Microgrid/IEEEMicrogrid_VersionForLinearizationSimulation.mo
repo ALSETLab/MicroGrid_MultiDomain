@@ -148,10 +148,8 @@ model IEEEMicrogrid_VersionForLinearizationSimulation
         extent={{-16,-16},{16,16}},
         rotation=0,
         origin={280,280})));
-  replaceable
-    MicroGrid.Thermal_Power.ThermalFluid_Sources.Models.Gas_Turbines.ThermoPower_GasTurbine
-    turbine constrainedby
-    MicroGrid.Thermal_Power.ThermalFluid_Sources.Models.Partial.Turbine
+  replaceable MicroGrid.Thermal_Power.Gas.GTModels.ThermoPower_GasTurbine
+    turbine constrainedby MicroGrid.Thermal_Power.Gas.Partial.Turbine
     annotation (Placement(transformation(
         extent={{-18,-18},{18,18}},
         rotation=180,
@@ -163,9 +161,9 @@ model IEEEMicrogrid_VersionForLinearizationSimulation
         rotation=0,
         origin={470,280})));
   replaceable
-    MicroGrid.Electrical.MultiDomain.Gas_and_Diesel_Generators.Diesel_Generator_NoDelay
+    MicroGrid.Electrical.TemporaryFernando.Gas_and_Diesel_Generators.Diesel_Generator_NoDelay
     diesel constrainedby
-    MicroGrid.Electrical.MultiDomain.BaseClasses.DieselBase
+    MicroGrid.Electrical.TemporaryFernando.BaseClasses.DieselBase
     annotation (Placement(transformation(extent={{462,122},{498,158}})));
   OpenIPSL.Electrical.Branches.PwLine DG_line(
     R=0.2686,
@@ -224,16 +222,15 @@ model IEEEMicrogrid_VersionForLinearizationSimulation
         origin={460,-60})));
   MicroGrid.Examples.SystemExamples.Data.Records.pf_DATA pf_DATA
     annotation (Placement(transformation(extent={{-142,-244},{-80,-190}})));
-  MicroGrid.Thermal_Power.ThermalFluid_Sources.Models.Gas_Turbines.Gen_GT
-    gen_GT(
+  MicroGrid.MultiDomain.Generation_Groups.SMIB.Gen_GT2 gen_GT(
     V_b=400,
     M_b=1000000,
     Q_0=585000,
     P_0=5000000,
     v_0=1,
-    angle_0=0) annotation (Placement(transformation(extent={{374,270},{
-            354,290}})));
-  MicroGrid.Electrical.Renewables.WECC.Irradiance_to_Power
+    angle_0=0)
+    annotation (Placement(transformation(extent={{374,270},{354,290}})));
+  MicroGrid.Electrical.Renewables.WECC.GridFollowing.Irradiance_to_Power
     irradiance_to_Power(derating_factor=1, use_irradiance_out=true)
     annotation (Placement(transformation(extent={{220,140},{240,160}})));
   OpenIPSL.Electrical.Events.Breaker breaker(enableTrigger=false)

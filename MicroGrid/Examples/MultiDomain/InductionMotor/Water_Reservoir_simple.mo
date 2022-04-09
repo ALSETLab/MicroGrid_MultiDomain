@@ -1,5 +1,6 @@
 within MicroGrid.Examples.MultiDomain.InductionMotor;
 model Water_Reservoir_simple
+  import MicroGrid;
   extends BaseClasses.Reservoir_partial;
   OpenIPSL.Electrical.Buses.Bus bus(
     v_0=1.01688,
@@ -17,14 +18,14 @@ model Water_Reservoir_simple
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={-184,0})));
-  Electrical.MultiDomain.InductionMotor.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC_uninitialized
+  Electrical.InductionMotor.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC_uninitialized
     aC_2_DC_and_DC_2_AC(
     V_b=380,
     P_0=10000000,
     Q_0=2500000,
     Rdc=0.001,
-    Cdc=0.002) annotation (Placement(transformation(extent={{-100,-20},
-            {-60,20}})));
+    Cdc=0.002)
+    annotation (Placement(transformation(extent={{-100,-20},{-60,20}})));
   OpenIPSL.Electrical.Branches.PwLine pwLine(
     R=0.01,
     X=0.01,
@@ -34,7 +35,7 @@ model Water_Reservoir_simple
   OpenIPSL.Electrical.Buses.Bus bus2(V_b=380)
                                     annotation (Placement(transformation(extent={{-130,
             -10},{-110,10}})));
-  Electrical.MultiDomain.InductionMotor.ThreePhase.PSAT.MotorTypel_MultiDomain_Simples
+  MicroGrid.MultiDomain.InductionMotor.ThreePhase.PSAT.MotorTypel_MultiDomain_Simples
     Type1_Motor(V_b=380, N=1)
     annotation (Placement(transformation(extent={{-22,-10},{-42,10}})));
   Modelica.Blocks.Sources.RealExpression realExpression(y=1)

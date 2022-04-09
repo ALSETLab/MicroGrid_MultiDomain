@@ -35,7 +35,7 @@ model Islanded_Grid_Following
     annotation (Placement(transformation(extent={{76,-40},{96,-20}})));
   inner OpenIPSL.Electrical.SystemBase SysData(fn=60)
     annotation (Placement(transformation(extent={{36,50},{94,90}})));
-  Electrical.Renewables.WECC.REECB controller(
+  Electrical.Renewables.WECC.GridFollowing.REECB controller(
     P_0(displayUnit="MW") = 10000000,
     Q_0(displayUnit="Mvar") = 3000000,
     v_0=1,
@@ -46,7 +46,7 @@ model Islanded_Grid_Following
     qflag=false,
     pqflag=false)
     annotation (Placement(transformation(extent={{-40,-62},{12,-38}})));
-  Electrical.Renewables.WECC.REGCA REGC(
+  Electrical.Renewables.WECC.GridFollowing.REGCA REGC(
     P_0(displayUnit="MW") = 10000000,
     Q_0(displayUnit="Mvar") = 3000000,
     v_0=1,

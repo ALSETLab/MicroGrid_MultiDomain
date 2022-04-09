@@ -1,14 +1,13 @@
 within MicroGrid.Electrical.Renewables.WECC;
 model Battery
-  REGCA                            BATTERY(
+  GridFollowing.REGCA BATTERY(
     S_b=SysData.S_b,
     M_b=20000,
     P_0=-5000,
     Q_0=20000,
     v_0=1,
     angle_0=0,
-    Lvplsw=true)
-    annotation (Placement(transformation(extent={{34,6},{76,46}})));
+    Lvplsw=true) annotation (Placement(transformation(extent={{34,6},{76,46}})));
   Modelica.Blocks.Sources.Constant BESS_Qext(k=1)
     annotation (Placement(transformation(extent={{-80,38},{-70,48}})));
   Modelica.Blocks.Sources.Constant PREF(k=-0.005/0.02)
@@ -19,7 +18,7 @@ model Battery
     annotation (Placement(transformation(extent={{-50,-22},{-40,-12}})));
   inner OpenIPSL.Electrical.SystemBase SysData(fn=60) annotation (
       Placement(transformation(extent={{-82,66},{-36,94}})));
-  REECC                            rEECC_WECC(
+  GridFollowing.REECC rEECC_WECC(
     M_b=20000,
     P_0=-5000,
     Q_0=20000,
@@ -45,8 +44,7 @@ model Battery
     Tpord=0.017,
     dbd1=-0.05,
     dbd2=0.05,
-    Imax=1.11)
-    annotation (Placement(transformation(extent={{-38,6},{20,44}})));
+    Imax=1.11) annotation (Placement(transformation(extent={{-38,6},{20,44}})));
   OpenIPSL.Interfaces.PwPin pwPin
     annotation (Placement(transformation(extent={{-110,-10},{-90,10}})));
 equation

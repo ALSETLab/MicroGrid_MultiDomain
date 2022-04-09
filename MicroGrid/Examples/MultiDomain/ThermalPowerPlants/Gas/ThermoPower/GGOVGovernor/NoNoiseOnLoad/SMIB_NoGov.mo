@@ -3,7 +3,7 @@ model SMIB_NoGov "Multi-Domain Network model, no generator controls, no governor
   import MicroGrid;
   import ThermoPower;
   extends
-    Electrical.Networks.SMIB.Partial.SMIB_Partial_NoNoise(
+    MicroGrid.Examples.BaseClasses.SMIB.Partial.SMIB_Partial_NoNoise(
     transformer(V_b=13.8e3, Vn=13.8e3),
     LOAD(
       V_b=13.8e3,
@@ -56,8 +56,8 @@ model SMIB_NoGov "Multi-Domain Network model, no generator controls, no governor
     v_0=pf_results.voltages.V1,
     angle_0=pf_results.voltages.A1)
     annotation (Placement(transformation(extent={{-70,-10},{-50,10}})));
-  replaceable parameter Electrical.Networks.SMIB.Records.PF_075 pf_results constrainedby
-    Electrical.Networks.SMIB.Records.PF_050
+  replaceable parameter MicroGrid.Examples.BaseClasses.SMIB.Records.PF_075
+    pf_results constrainedby MicroGrid.Examples.BaseClasses.SMIB.Records.PF_050
     annotation (Placement(transformation(extent={{-134,50},{-114,70}})));
   Modelica.Blocks.Sources.Constant const(k=0.649458) annotation (Placement(transformation(extent={{-156,0},{-136,20}})));
 equation

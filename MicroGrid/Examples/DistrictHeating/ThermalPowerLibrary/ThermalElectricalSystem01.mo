@@ -91,7 +91,7 @@ model ThermalElectricalSystem01
     steadyState=true,
     n_nom=1797.89) annotation (Placement(transformation(extent={{-84,-70},
             {-64,-50}})));
-  Electrical.MultiDomain.InductionMotor.SinglePhase.DPIM dPIM(
+  Electrical.InductionMotor.SinglePhase.DPIM dPIM(
     V_b=230,
     init=2,
     Lmainr=0.000588,

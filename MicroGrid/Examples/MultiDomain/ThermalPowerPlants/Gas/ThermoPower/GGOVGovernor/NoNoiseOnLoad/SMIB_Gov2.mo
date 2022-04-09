@@ -3,7 +3,7 @@ model SMIB_Gov2 "Model with GGOV1 turbine and ThermoPower PID controller, change
   import MicroGrid;
   import ThermoPower;
   extends
-    Electrical.Networks.SMIB.Partial.SMIB_Partial_NoNoise(
+    MicroGrid.Examples.BaseClasses.SMIB.Partial.SMIB_Partial_NoNoise(
     transformer(V_b=13.8e3, Vn=13.8e3),
     LOAD(V_b=13.8e3),
     GEN1(V_b=13.8e3),
@@ -53,7 +53,8 @@ model SMIB_Gov2 "Model with GGOV1 turbine and ThermoPower PID controller, change
     Kturb=1.5,
     Wfnl=0.15,
     Rselect=1) annotation (Placement(transformation(extent={{-94,-64},{-120,-36}})));
-  Electrical.Networks.SMIB.Records.PF_050 pf_results annotation (Placement(transformation(extent={{-136,50},{-116,70}})));
+  MicroGrid.Examples.BaseClasses.SMIB.Records.PF_050 pf_results
+    annotation (Placement(transformation(extent={{-136,50},{-116,70}})));
   Thermal_Power.Gas.GTModels.ThPowerSSGT gtDyns annotation (Placement(transformation(extent={{-130,-20},{-90,20}})));
 equation
   connect(GEN1.p, genGroup.pwPin) annotation (Line(points={{-42,0},{-49,0}}, color={0,0,255}));

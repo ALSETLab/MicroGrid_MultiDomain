@@ -1,5 +1,6 @@
 within MicroGrid.Examples.DistrictHeating.ThermalPowerLibrary;
 model ResidentialLoad02
+  import MicroGrid;
   extends Modelica.Icons.Example;
   import ThermalPower;
   parameter Integer n_consumer = 1;
@@ -42,8 +43,8 @@ model ResidentialLoad02
     p_supply=500000,
     p_return=500000)
     annotation (Placement(transformation(extent={{70,70},{90,90}})));
-  Electrical.MultiDomain.ThermalElectrical.AggregateEnergyResidence AggregLoad(S_b=
-        SysData.S_b)
+  MicroGrid.MultiDomain.HighLevelGrid.ThermalElectrical.AggregateEnergyResidence
+    AggregLoad(S_b=SysData.S_b)
     annotation (Placement(transformation(extent={{60,-60},{80,-40}})));
   OpenIPSL.Electrical.Buses.Bus bus(
     v_0=1,
@@ -76,8 +77,8 @@ model ResidentialLoad02
   Electrical.Renewables.WECC.PV_Module_for_irradiance
     pV_Module_for_irradiance(use_irradiance_in=true, angle_0=0.02574992)
     annotation (Placement(transformation(extent={{-60,50},{-40,70}})));
-  Electrical.Renewables.WECC.Irradiance_to_Power irradiance_to_Power(
-      use_irradiance_out=true)
+  Electrical.Renewables.WECC.GridFollowing.Irradiance_to_Power
+    irradiance_to_Power(use_irradiance_out=true)
     annotation (Placement(transformation(extent={{-90,70},{-70,90}})));
 equation
   connect(groundTemperature.y,system_TPL. T_ambient_in)

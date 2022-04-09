@@ -150,9 +150,9 @@ model IEEEMicrogrid_05 "Model used for regular simulation tasks."
         rotation=0,
         origin={258,200})));
   replaceable
-    MicroGrid.Electrical.MultiDomain.Gas_and_Diesel_Generators.Diesel_Generator
+    MicroGrid.Electrical.TemporaryFernando.Gas_and_Diesel_Generators.Diesel_Generator
     diesel constrainedby
-    MicroGrid.Electrical.MultiDomain.BaseClasses.DieselBase
+    MicroGrid.Electrical.TemporaryFernando.BaseClasses.DieselBase
     annotation (Placement(transformation(extent={{438,338},{474,374}})));
   OpenIPSL.Electrical.Branches.PwLine DG_line(
     R=0.2686,
@@ -212,7 +212,7 @@ model IEEEMicrogrid_05 "Model used for regular simulation tasks."
         origin={450,-30})));
   MicroGrid.Examples.SystemExamples.Data.Records.pf_DATA pf_DATA
     annotation (Placement(transformation(extent={{-158,-258},{-120,-228}})));
-  MicroGrid.Electrical.Renewables.WECC.Irradiance_to_Power
+  MicroGrid.Electrical.Renewables.WECC.GridFollowing.Irradiance_to_Power
     irradiance_to_Power(derating_factor=1, use_irradiance_out=true)
     annotation (Placement(transformation(extent={{196,356},{216,376}})));
   OpenIPSL.Electrical.Buses.Bus fault_bus_01
@@ -277,14 +277,14 @@ model IEEEMicrogrid_05 "Model used for regular simulation tasks."
     phase=-2.0943951023932,
     offset=30) annotation (Placement(transformation(extent={{-136,-214},
             {-116,-194}})));
-  MicroGrid.Electrical.MultiDomain.InductionMotor.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC_uninitialized
+  MicroGrid.Electrical.InductionMotor.VariableSpeedDrive.Power_Electronics.AC2DC_and_DC2AC_uninitialized
     aC_2_DC_and_DC_2_AC(
     V_b=380,
     P_0=50000000,
     Q_0=10000000,
     Cdc=0.02)
     annotation (Placement(transformation(extent={{296,180},{336,220}})));
-  MicroGrid.Electrical.MultiDomain.InductionMotor.VariableSpeedDrive.Controls.VoltsHertz_Controller
+  MicroGrid.Electrical.InductionMotor.VariableSpeedDrive.Controls.VoltsHertz_Controller
     volts_Hertz_Control(
     V_b=380,
     Kf=0.7/188.275,
@@ -293,7 +293,7 @@ model IEEEMicrogrid_05 "Model used for regular simulation tasks."
     we_max=300,
     we_min=150)
     annotation (Placement(transformation(extent={{294,120},{330,160}})));
-  MicroGrid.Electrical.MultiDomain.InductionMotor.ThreePhase.PSAT.MotorTypel_MultiDomain_Full
+  MicroGrid.MultiDomain.InductionMotor.ThreePhase.PSAT.MotorTypel_MultiDomain_Full
     MotorTypel(
     V_b=380,
     P_0(displayUnit="W") = 35836.1,
@@ -306,8 +306,7 @@ model IEEEMicrogrid_05 "Model used for regular simulation tasks."
     Xm=2.4,
     Hm=0.8,
     M_b=500000,
-    N=2)
-    annotation (Placement(transformation(extent={{366,190},{346,210}})));
+    N=2) annotation (Placement(transformation(extent={{366,190},{346,210}})));
   Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor
     annotation (Placement(transformation(extent={{376,190},{396,210}})));
   Modelica.Mechanics.Rotational.Components.Inertia inertia_of_the_pump(J=2.6485,
@@ -315,9 +314,9 @@ model IEEEMicrogrid_05 "Model used for regular simulation tasks."
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={414,200})));
-  MicroGrid.Electrical.MultiDomain.InductionMotor.VariableSpeedDrive.Controls.pump_controller
-    pump_controller(kp=1, mflow_2_speed=188.275/2)       annotation (
-      Placement(transformation(extent={{242,120},{282,160}})));
+  MicroGrid.Electrical.InductionMotor.VariableSpeedDrive.Controls.pump_controller
+    pump_controller(kp=1, mflow_2_speed=188.275/2)
+    annotation (Placement(transformation(extent={{242,120},{282,160}})));
   Modelica.Blocks.Sources.RealExpression Water_Flow_Ref(y=1)
     annotation (Placement(transformation(extent={{210,142},{230,162}})));
   Modelica.Blocks.Sources.RealExpression HeatDemand(y=1000) annotation (
@@ -385,7 +384,7 @@ model IEEEMicrogrid_05 "Model used for regular simulation tasks."
     pout_start=init.p_supply,
     steadyState=true)
     annotation (Placement(transformation(extent={{290,60},{310,80}})));
-  MicroGrid.Electrical.MultiDomain.InductionMotor.SinglePhase.DPIM dPIM(
+  MicroGrid.Electrical.InductionMotor.SinglePhase.DPIM dPIM(
     V_b=380,
     init=2,
     Lmainr=0.000588,
@@ -408,10 +407,8 @@ model IEEEMicrogrid_05 "Model used for regular simulation tasks."
       redeclare package Medium =
         Modelon.Media.PreDefined.TwoPhase.WaterIF97)
     annotation (Placement(transformation(extent={{322,66},{342,86}})));
-  replaceable
-    MicroGrid.Thermal_Power.ThermalFluid_Sources.Models.Gas_Turbines.ThermalPower_GasTurbine
-    turbine constrainedby
-    MicroGrid.Thermal_Power.ThermalFluid_Sources.Models.Partial.Turbine
+  replaceable MicroGrid.Thermal_Power.Gas.GTModels.ThermalPower_GasTurbine
+    turbine constrainedby MicroGrid.Thermal_Power.Gas.Partial.Turbine
     annotation (Placement(transformation(
         extent={{-18,-18},{18,18}},
         rotation=180,
@@ -421,15 +418,14 @@ model IEEEMicrogrid_05 "Model used for regular simulation tasks."
         extent={{10,-10},{-10,10}},
         rotation=0,
         origin={504,240})));
-  MicroGrid.Thermal_Power.ThermalFluid_Sources.Models.Gas_Turbines.Gen_GT
-    gen_GT(
+  MicroGrid.MultiDomain.Generation_Groups.SMIB.Gen_GT2 gen_GT(
     V_b=400,
     M_b=1000000,
     Q_0=585000,
     P_0=5000000,
     v_0=1,
-    angle_0=0) annotation (Placement(transformation(extent={{432,230},{
-            412,250}})));
+    angle_0=0)
+    annotation (Placement(transformation(extent={{432,230},{412,250}})));
   OpenIPSL.Electrical.Events.Breaker breaker5(enableTrigger=false)
     annotation (Placement(transformation(extent={{-260,50},{-240,70}})));
   MicroGrid.Electrical.Renewables.PNNL.GridForming.CVS cVS(

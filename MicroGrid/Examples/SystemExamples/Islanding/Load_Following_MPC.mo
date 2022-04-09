@@ -94,13 +94,13 @@ equation
   connect(cVS.EDROOP_0,controller. EDROOP_0) annotation (Line(points={{12,-41},
           {12,-50},{-26.4286,-50},{-26.4286,-40.7143}},         color={
           0,0,127}));
-  connect(cVS.P_inv,controller. P_inv) annotation (Line(points={{-1,-19},
-          {-1,-14},{-36,-14},{-36,-22.8571},{-30.7143,-22.8571}},color=
+  connect(cVS.P_inv,controller. P_inv) annotation (Line(points={{-1,-19},{-1,
+          -14},{-36,-14},{-36,-22.8571},{-30.7143,-22.8571}},    color=
           {0,0,127}));
-  connect(cVS.Q_inv,controller. Q_inv) annotation (Line(points={{6,-19},
-          {6,-10},{-42,-10},{-42,-30},{-30.7143,-30}},  color={0,0,127}));
-  connect(cVS.V_inv,controller. V_inv) annotation (Line(points={{13,-19},
-          {13,-6},{-50,-6},{-50,-37.1429},{-30.7143,-37.1429}}, color={
+  connect(cVS.Q_inv,controller. Q_inv) annotation (Line(points={{6,-19},{6,-10},
+          {-42,-10},{-42,-30},{-30.7143,-30}},          color={0,0,127}));
+  connect(cVS.V_inv,controller. V_inv) annotation (Line(points={{13,-19},{13,-6},
+          {-50,-6},{-50,-37.1429},{-30.7143,-37.1429}},         color={
           0,0,127}));
   connect(cVS.p,GEN1. p)
     annotation (Line(points={{16,-30},{30,-30}}, color={0,0,255}));
@@ -116,8 +116,8 @@ equation
     annotation (Line(points={{50,20},{72,20},{72,0}}, color={0,0,255}));
   connect(CONT.dp_u,dp_u_opt)  annotation (Line(points={{-82,0},{-86,0},{-86,-20},
           {-66,-20},{-66,-40},{-92,-40}},      color={0,0,127}));
-  connect(CONT.u, controller.u1) annotation (Line(points={{-59,0},{-20,
-          0},{-20,-18.5714}}, color={0,0,127}));
+  connect(CONT.u, controller.u1) annotation (Line(points={{-59,0},{-20,0},{-20,
+          -18.5714}},         color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     experiment(

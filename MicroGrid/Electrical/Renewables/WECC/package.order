@@ -1,11 +1,5 @@
-GFM_REGC
-GFM_REEC
-REGCA
-REGCC
-REECB
-REECC
-REPCA
-Irradiance_to_Power
 PV_Module_for_irradiance
 Battery
 Logic_Blocks
+GridFollowing
+GridForming

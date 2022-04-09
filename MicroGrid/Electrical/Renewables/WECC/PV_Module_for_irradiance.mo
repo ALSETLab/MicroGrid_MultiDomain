@@ -24,7 +24,7 @@ model PV_Module_for_irradiance
   parameter OpenIPSL.Types.Angle angle_0(displayUnit = "deg");
   inner OpenIPSL.Electrical.SystemBase SysData(fn=60)
     annotation (Placement(transformation(extent={{34,70},{88,94}})));
-  Electrical.Renewables.WECC.REECB REECB1(
+  GridFollowing.REECB REECB1(
     M_b=M_b,
     P_0(displayUnit="MW") = P_0,
     Q_0(displayUnit="Mvar") = Q_0,
@@ -36,7 +36,7 @@ model PV_Module_for_irradiance
     annotation (Placement(transformation(extent={{-48,-20},{44,20}})));
   Modelica.Blocks.Sources.Constant const(k=Q_0/S_b)
     annotation (Placement(transformation(extent={{-96,48},{-76,68}})));
-  Electrical.Renewables.WECC.REGCA REGCA1(
+  GridFollowing.REGCA REGCA1(
     M_b=M_b,
     P_0(displayUnit="MW") = P_0,
     Q_0(displayUnit="Mvar") = Q_0,
@@ -50,31 +50,30 @@ model PV_Module_for_irradiance
 equation
   connect(REECB1.Iqcmd,REGCA1. Iqcmd)
     annotation (Line(points={{45.4375,10},{49.1429,10}},     color={0,0,127}));
-  connect(REECB1.Ipcmd,REGCA1. Ipcmd) annotation (Line(points={{45.4375,
-          -10},{49.1429,-10}},
+  connect(REECB1.Ipcmd,REGCA1. Ipcmd) annotation (Line(points={{45.4375,-10},{
+          49.1429,-10}},
                       color={0,0,127}));
-  connect(REGCA1.V_t,REECB1. Vt) annotation (Line(points={{62,21.4286},
-          {62,32},{-56,32},{-56,14},{-52,14},{-52,14.2857},{-50.875,
-          14.2857}},                               color={0,0,127}));
-  connect(REGCA1.Qgen,REECB1. Qgen) annotation (Line(points={{82,
-          21.4286},{82,40},{-68,40},{-68,-1.77636e-15},{-50.875,
-          -1.77636e-15}},
+  connect(REGCA1.V_t,REECB1. Vt) annotation (Line(points={{62,21.4286},{62,32},
+          {-56,32},{-56,14},{-52,14},{-52,14.2857},{-50.875,14.2857}},
+                                                   color={0,0,127}));
+  connect(REGCA1.Qgen,REECB1. Qgen) annotation (Line(points={{82,21.4286},{82,
+          40},{-68,40},{-68,-1.77636e-15},{-50.875,-1.77636e-15}},
         color={0,0,127}));
-  connect(REGCA1.Pgen,REECB1. Pe) annotation (Line(points={{72,21.4286},
-          {72,36},{-62,36},{-62,7.14286},{-50.875,7.14286}},
+  connect(REGCA1.Pgen,REECB1. Pe) annotation (Line(points={{72,21.4286},{72,36},
+          {-62,36},{-62,7.14286},{-50.875,7.14286}},
         color={0,0,127}));
   connect(REGCA1.p, pwPin) annotation (Line(points={{93.4286,0},{-100,0}},
                                                    color={0,0,255}));
-  connect(REECB1.IP00, REGCA1.IP0) annotation (Line(points={{21,
-          -22.8571},{21,-30},{63.4286,-30},{63.4286,-21.4286}}, color=
+  connect(REECB1.IP00, REGCA1.IP0) annotation (Line(points={{21,-22.8571},{21,
+          -30},{63.4286,-30},{63.4286,-21.4286}},               color=
          {0,0,127}));
-  connect(REECB1.IQ00, REGCA1.IQ0) annotation (Line(points={{-25,
-          -22.8571},{-25,-36},{80.5714,-36},{80.5714,-21.4286}},
+  connect(REECB1.IQ00, REGCA1.IQ0) annotation (Line(points={{-25,-22.8571},{-25,
+          -36},{80.5714,-36},{80.5714,-21.4286}},
         color={0,0,127}));
   connect(const.y, REECB1.Qext) annotation (Line(points={{-75,58},{
           -72,58},{-72,-7.14286},{-50.875,-7.14286}}, color={0,0,127}));
-  connect(realExpression.y, REECB1.Pref) annotation (Line(points={{-59,-30},
-          {-56,-30},{-56,-14.2857},{-50.875,-14.2857}},
+  connect(realExpression.y, REECB1.Pref) annotation (Line(points={{-59,-30},{
+          -56,-30},{-56,-14.2857},{-50.875,-14.2857}},
         color={0,0,127}));
   annotation (Icon(graphics={Bitmap(
           extent={{-100,-100},{100,100}},

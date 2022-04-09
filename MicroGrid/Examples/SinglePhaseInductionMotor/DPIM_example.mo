@@ -19,7 +19,7 @@ model DPIM_example
     annotation (Placement(transformation(extent={{0,-10},{20,10}})));
   inner OpenIPSL.Electrical.SystemBase SysData(fn=60, S_b=100000000) annotation (Placement(transformation(extent={{44,26},
             {84,46}})));
-  Electrical.MultiDomain.InductionMotor.SinglePhase.DPIM2 DPIM(
+  Electrical.InductionMotor.SinglePhase.DPIM2 DPIM(
     V_b=230,
     init=2,
     switch_open_speed=0.3,

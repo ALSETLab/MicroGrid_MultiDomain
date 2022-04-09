@@ -50,7 +50,7 @@ model SPIM_example
           extent={{-10,-10},{10,10}})));
   OpenIPSL.Electrical.ThreePhase.Buses.Bus_3Ph Bus4 annotation (Placement(
         transformation(origin={68,0}, extent={{-10,-10},{10,10}})));
-  Electrical.MultiDomain.InductionMotor.SinglePhase.SPIM AC01(
+  Electrical.InductionMotor.SinglePhase.SPIM AC01(
     P_0=1275000,
     Q_0=1000000,
     v_0=1,
@@ -64,7 +64,7 @@ model SPIM_example
     a=0.001,
     b=0,
     c=0) annotation (Placement(transformation(extent={{80,16},{100,36}})));
-  Electrical.MultiDomain.InductionMotor.SinglePhase.SPIM AC02(
+  Electrical.InductionMotor.SinglePhase.SPIM AC02(
     P_0=1800000,
     Q_0=1000000,
     angle_0=-2.0943951023932,
@@ -76,9 +76,8 @@ model SPIM_example
     H=0.1,
     a=0.001,
     b=0,
-    c=0)
-    annotation (Placement(transformation(extent={{80,-10},{100,10}})));
-  Electrical.MultiDomain.InductionMotor.SinglePhase.SPIM AC03(
+    c=0) annotation (Placement(transformation(extent={{80,-10},{100,10}})));
+  Electrical.InductionMotor.SinglePhase.SPIM AC03(
     P_0=2375000,
     Q_0=1000000,
     angle_0=2.0943951023932,
@@ -90,8 +89,7 @@ model SPIM_example
     H=0.1,
     a=0.001,
     b=0,
-    c=0)
-    annotation (Placement(transformation(extent={{80,-36},{100,-16}})));
+    c=0) annotation (Placement(transformation(extent={{80,-36},{100,-16}})));
   OpenIPSL.Electrical.Events.PwFault pwFault(
     R=0.01,
     X=0.01,

@@ -1,5 +1,6 @@
 within MicroGrid.Examples.MultiDomain.InductionMotor;
 model Water_Reservoir
+  import MicroGrid;
   extends BaseClasses.Reservoir_partial(SOURCE(p=300000, T=303.15),
       inertia_of_the_pump(w(start=370)));
   OpenIPSL.Electrical.Buses.Bus bus(
@@ -27,12 +28,11 @@ model Water_Reservoir
   OpenIPSL.Electrical.Buses.Bus bus2(V_b=380)
                                     annotation (Placement(transformation(extent={{-130,
             -10},{-110,10}})));
-  Electrical.MultiDomain.InductionMotor.ThreePhase.PSAT.MotorTypeIII_MultiDomain_Full
+  MicroGrid.MultiDomain.InductionMotor.ThreePhase.PSAT.MotorTypeIII_MultiDomain_Full
     motorTypeIII_MultiDomain(
     N=2,
     M_b(displayUnit="MVA"),
-    V_b=380)
-    annotation (Placement(transformation(extent={{-22,-10},{-42,10}})));
+    V_b=380) annotation (Placement(transformation(extent={{-22,-10},{-42,10}})));
   Modelica.Blocks.Sources.RealExpression we(y=Modelica.Constants.pi*
         SysData.fn)
     annotation (Placement(transformation(extent={{-64,-60},{-44,-40}})));
