@@ -1,29 +1,17 @@
 within ;
 encapsulated package MicroGrid
   import PowerSystems;
-  import CHP_MultiDomain;
 import Modelica;
 import OpenIPSL;
-import ApplicationExamples.N44;
 import Complex;
 import ModelicaServices;
 import ThermalPower;
-import OpenCPS_D53B;
 import Modelon;
 import ThermoPower;
-import TETIANA_MICROGRID_LIBRARY;
 import Buildings;
-
-
-
-
-
-
 
   annotation (uses(
       ModelicaServices(version="4.0.0"),
-      OpenCPS_D53B(version="1"),
-      ThermoSysPro(version="3.2"),
       Buildings(version="7.0.2"),
       Modelica(version="4.0.0"),
       ThermalPower(version="1.23"),
@@ -39,6 +27,5 @@ import Buildings;
               "modelica://MicroGrid/../../../../../../../Downloads/MICROGRID.drawio(1).svg")}),
     conversion(from(version="", script=
             "modelica://MicroGrid/ConvertFromMicroGrid_.mos",
-        to=""), from(version="", script=
-            "modelica://MicroGrid/ConvertFromMicroGrid2_.mos")));
+        to="")));
 end MicroGrid;

@@ -93,8 +93,8 @@ model MODIFIED_GAS_TURBINE "Model of gas turbine, compressor and combustor"
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-38,34})));
-  ThermalPower.FlueGas.Interfaces.VolumePort fuel_in(redeclare package Medium
-      = Medium_Fuel) annotation (Placement(transformation(extent={{-82,70},{-62,
+  ThermalPower.FlueGas.Interfaces.VolumePort fuel_in(redeclare package Medium =
+        Medium_Fuel) annotation (Placement(transformation(extent={{-82,70},{-62,
             90}}), iconTransformation(extent={{-46,92},{-32,106}})));
   ThermalPower.FlueGas.Interfaces.FlowPort gas_out(redeclare package Medium =
         Medium) annotation (Placement(transformation(extent={{72,-108},{92,-88}}),
