@@ -1009,7 +1009,7 @@ Substation")}));
               extent={{-10,-10},{10,10}},
               rotation=-90,
               origin={94,-88}), iconTransformation(extent={{-82,-62},{-102,-42}})));
-        OpenCPS_D53B.PowerSystemDomain.Controls.GGOV1.Simplified.GGOV2 govturb(
+        Electrical.Controls.TG.GGOV1.Simplified.GGOV2                  govturb(
           R=0.04,
           T_pelec=1,
           maxerr=0.05,
@@ -1050,8 +1050,8 @@ Substation")}));
         connect(Pm0, gENROU.PMECH0) annotation (Line(points={{60,-106},{60,-74},{86,-74},{86,15},{63,15}}, color={0,0,127}));
         connect(gENROU.SPEED, speed) annotation (Line(points={{63,21},{83.5,21},{83.5,20},{106,20}}, color={0,0,127}));
         connect(gENROU.PELEC, PELEC) annotation (Line(points={{63,9},{94,9},{94,-88}}, color={0,0,127}));
-        connect(govturb.PELEC, PELEC) annotation (Line(points={{-81.125,
-                49.8571},{-90,49.8571},{-90,-52},{94,-52},{94,-88}},                                                         color={0,0,127}));
+        connect(govturb.PELEC, PELEC) annotation (Line(points={{-81.125,49.8571},
+                {-90,49.8571},{-90,-52},{94,-52},{94,-88}},                                                                  color={0,0,127}));
         connect(govturb.SPEED, speed) annotation (Line(points={{-81.125,73},{-90,73},{-90,88},{80,88},{80,22},{83.5,21},{83.5,20},{106,20}}, color={0,0,127}));
         connect(govturb.PMECH, gENROU.PMECH) annotation (Line(points={{-38.5,50},{-20,50},{-20,15},{-6,15}},color={0,0,127}));
         annotation (
@@ -1407,7 +1407,7 @@ Substation")}));
               extent={{-10,-10},{10,10}},
               rotation=-90,
               origin={-44,-98})));
-        OpenCPS_D53B.PowerSystemDomain.Controls.GGOV1.Simplified.GGOV2 govturb(
+        Electrical.Controls.TG.GGOV1.Simplified.GGOV2                  govturb(
           R=0.04,
           T_pelec=1,
           maxerr=0.05,
@@ -1472,8 +1472,8 @@ Substation")}));
                 {88,-42.4},{88,25},{63,25}},                                                         color={0,0,127}));
         connect(govturb.PMECH, gENROU.PMECH) annotation (Line(points={{-38.5,50},{-20,50},{-20,19},{-6,19}}, color={0,0,127}));
         connect(govturb.SPEED, gENROU.SPEED) annotation (Line(points={{-81.125,73},{-90,73},{-90,88},{80,88},{80,25},{63,25}}, color={0,0,127}));
-        connect(add.y, govturb.PELEC) annotation (Line(points={{-97,46},{
-                -89.5,46},{-89.5,49.8571},{-81.125,49.8571}},
+        connect(add.y, govturb.PELEC) annotation (Line(points={{-97,46},{-89.5,
+                46},{-89.5,49.8571},{-81.125,49.8571}},
                                                    color={0,0,127}));
         connect(add.u2, pss.V_S2) annotation (Line(points={{-120,40},{-88,40},
                 {-88,-44},{20,-44},{20,-45.6},{61.9,-45.6}},
