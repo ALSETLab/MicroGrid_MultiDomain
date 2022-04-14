@@ -10,7 +10,7 @@ model SineNoiseInjection
 
   Modelica.Blocks.Sources.Sine sine(
     amplitude=amplitude,
-    freqHz=freqHz,
+    f=freqHz,
     phase=phase,
     offset=offset,
     startTime=startTime)

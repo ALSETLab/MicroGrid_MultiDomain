@@ -7,7 +7,8 @@ model GENSAE "SALIENT POLE GENERATOR MODEL (EXPONENTIAL SATURATION)"
   import Modelica.ComplexMath.arg;
   import Modelica.ComplexMath.real;
   import Modelica.ComplexMath.imag;
-  import Modelica.ComplexMath.'abs';
+  import 'abs' =
+         Modelica.ComplexMath.abs;
   import Modelica.ComplexMath.conj;
   import Modelica.ComplexMath.fromPolar;
   import Modelica.ComplexMath.j;

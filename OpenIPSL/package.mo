@@ -1,31 +1,32 @@
 package OpenIPSL "Open-Instance Power System Library"
-  import SI = Modelica.SIunits;
+  import      Modelica.Units.SI;
   import C = Modelica.Constants;
 
 annotation (preferredView="info",
   Protection(access = Access.packageDuplicate),
-  uses(Complex(version="3.2.3"), Modelica(version="3.2.3")),
+  uses(Complex(version="4.0.0"), Modelica(version="4.0.0")),
   version="2.0.0-beta.1",
   versionDate="2020-12-16",
   conversion(
-     from(version={"0.8","0.8.1","1.0.0","1.5.0"}, script="modelica://OpenIPSL/Resources/Scripts/ConvertOpenIPSL_from_1.5.0_to_2.0.0.mos")),
+     from(version={"0.8","0.8.1","1.0.0","1.5.0"}, script="modelica://OpenIPSL/Resources/Scripts/ConvertOpenIPSL_from_1.5.0_to_2.0.0.mos",
+      to="2.0.0-beta.1"), from(version="2.0.0-beta.1", script=
+          "modelica://OpenIPSL/Resources/Scripts/ConvertFromOpenIPSL_2.0.0-beta.1.mos")),
   Icon(graphics={Bitmap(extent={{-100,-100},{100,100}}, fileName=
             "modelica://OpenIPSL/Resources/Images/OpenIPSL_Logo.png")}),
   Documentation(info="<html>
 <p>
-The <strong><code>OpenIPSL</code></strong> or Open-Instance Power System Library is a
+The <strong><code>OpenIPSL</code></strong> or Open-Instance Power System Library is a 
 <a href=\"https://www.modelica.org\">Modelica</a> library, fork of of the
-<a href=\"https://github.com/itesla/ipsl\">iTesla Power System Library</a>
+<a href=\"https://github.com/itesla/ipsl\">iTesla Power System Library</a> 
 developed and maintained by the <a href=\"https://alsetlab.github.io/\">AlsetLab</a> research group,
 collaborators and friends (contributions are welcome!).
-The library contains a set of power system component models and test power system
+The library contains a set of power system component models and test power system 
 networks adopting the phasor modeling approach.
-<a href=\"https://build.openmodelica.org/Documentation/OpenModelica.Scripting.simulate.html\">Time domain simulations</a>
+<a href=\"https://build.openmodelica.org/Documentation/OpenModelica.Scripting.simulate.html\">Time domain simulations</a> 
 can be carried out using a Modelica-compliant tool,
-which may also allow to do other computations on the model,
+which may also allow to do other computations on the model, 
 such as <a href=\"https://build.openmodelica.org/Documentation/OpenModelica.Scripting.linearize.html\">linearization</a>
 for eigen-analysis and other purposes.
-</p>
 <p>
 If you are looking for an introduction to the library, have especially a look at:
 </p>
