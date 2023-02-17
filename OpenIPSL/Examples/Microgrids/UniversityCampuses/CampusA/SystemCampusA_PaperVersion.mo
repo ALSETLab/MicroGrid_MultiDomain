@@ -1,5 +1,5 @@
 within OpenIPSL.Examples.Microgrids.UniversityCampuses.CampusA;
-model SystemCampusA "Campus Model 1"
+model SystemCampusA_PaperVersion "Campus Model 1"
   extends Modelica.Icons.Example;
   OpenIPSL.Electrical.Buses.Bus B1L1(
     V_b=13800,
@@ -498,7 +498,7 @@ model SystemCampusA "Campus Model 1"
                                  annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
-        origin={122,140})));
+        origin={122,136})));
   Electrical.Events.Breaker BrST(enableTrigger=false, t_o=0) annotation (
       Placement(transformation(
         extent={{-6,-6},{6,6}},
@@ -667,7 +667,7 @@ equation
   connect(pwFault.p, B2L8.p) annotation (Line(points={{62.3333,-138},{28,-138},
           {28,-160},{22,-160}}, color={0,0,255}));
   connect(steamTurbineUnit.pwPin, BrST.s)
-    annotation (Line(points={{122,151},{122,160}}, color={0,0,255}));
+    annotation (Line(points={{122,147},{122,160}}, color={0,0,255}));
   connect(BrST.r, B3L2.p)
     annotation (Line(points={{122,172},{122,180}}, color={0,0,255}));
   connect(BrGT1.r, B1L2.p)
@@ -687,4 +687,4 @@ equation
         coordinateSystem(preserveAspectRatio=false, extent={{-220,-300},{220,
             300}})),
     experiment(StopTime=30, __Dymola_Algorithm="Dassl"));
-end SystemCampusA;
+end SystemCampusA_PaperVersion;
