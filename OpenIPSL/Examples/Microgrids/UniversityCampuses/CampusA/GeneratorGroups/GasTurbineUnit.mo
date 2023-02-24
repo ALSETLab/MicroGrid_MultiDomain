@@ -28,11 +28,7 @@ model GasTurbineUnit
   Modelica.Blocks.Sources.Constant zero(k=0) annotation (Placement(transformation(
         extent={{6,6},{-6,-6}},
         rotation=180,
-        origin={-66,-16})));
-  Modelica.Blocks.Sources.Constant minusInf(k=0)                       annotation (Placement(transformation(extent={{-60,-74},
-            {-52,-66}})));
-  Modelica.Blocks.Sources.Constant plusInf(k=0)                      annotation (Placement(transformation(extent={{-60,-88},
-            {-52,-80}})));
+        origin={-50,-16})));
   Electrical.Controls.PSSE.ES.EXAC1 eXAC1_1(
     T_R=0,
     T_B=0,
@@ -60,11 +56,7 @@ equation
   connect(eXAC1_1.EFD, gENROE.EFD) annotation (Line(points={{1,-20},{6,-20},{6,
           -12},{16,-12}}, color={0,0,127}));
   connect(zero.y, eXAC1_1.VOTHSG)
-    annotation (Line(points={{-59.4,-16},{-21,-16}}, color={0,0,127}));
-  connect(minusInf.y, eXAC1_1.VUEL) annotation (Line(points={{-51.6,-70},{-14,
-          -70},{-14,-31}}, color={0,0,127}));
-  connect(plusInf.y, eXAC1_1.VOEL) annotation (Line(points={{-51.6,-84},{-10,
-          -84},{-10,-31}}, color={0,0,127}));
+    annotation (Line(points={{-43.4,-16},{-21,-16}}, color={0,0,127}));
   connect(gENROE.XADIFD, eXAC1_1.XADIFD) annotation (Line(points={{62,-18},{68,
           -18},{68,-38},{-2,-38},{-2,-31}}, color={0,0,127}));
   connect(gENROE.EFD0, eXAC1_1.EFD0) annotation (Line(points={{62,-10},{74,-10},
@@ -77,6 +69,10 @@ equation
           {-26,32},{68,32},{68,14},{62,14}}, color={0,0,127}));
   connect(gAST.PMECH0, gENROE.PMECH0) annotation (Line(points={{-18,6},{-32,6},
           {-32,38},{74,38},{74,10},{62,10}}, color={0,0,127}));
+  connect(eXAC1_1.VUEL, eXAC1_1.VOTHSG) annotation (Line(points={{-14,-31},{-14,
+          -36},{-38,-36},{-38,-16},{-21,-16}}, color={0,0,127}));
+  connect(eXAC1_1.VOEL, eXAC1_1.VOTHSG) annotation (Line(points={{-10,-31},{-10,
+          -36},{-38,-36},{-38,-16},{-21,-16}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                                    Diagram(coordinateSystem(preserveAspectRatio=
            false)));
