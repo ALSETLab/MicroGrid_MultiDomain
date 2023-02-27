@@ -24,11 +24,11 @@ model GasTurbineUnit
     R_a=0.01,
     Xpq=0.4610,
     Tpq0=0.391)
-            annotation (Placement(transformation(extent={{20,-20},{60,20}})));
+            annotation (Placement(transformation(extent={{38,-20},{78,20}})));
   Modelica.Blocks.Sources.Constant zero(k=0) annotation (Placement(transformation(
         extent={{6,6},{-6,-6}},
         rotation=180,
-        origin={-50,-16})));
+        origin={-20,-16})));
   Electrical.Controls.PSSE.ES.EXAC1 eXAC1_1(
     T_R=0,
     T_B=0,
@@ -47,32 +47,33 @@ model GasTurbineUnit
     E_2=5.6,
     S_EE_1=0.1827,
     S_EE_2=0.2558)
-    annotation (Placement(transformation(extent={{-20,-30},{0,-10}})));
+    annotation (Placement(transformation(extent={{4,-30},{24,-10}})));
   Electrical.Controls.PSSE.TG.GAST gAST
-    annotation (Placement(transformation(extent={{-20,2},{0,22}})));
+    annotation (Placement(transformation(extent={{4,2},{24,22}})));
 equation
   connect(gENROE.p, pwPin)
-    annotation (Line(points={{60,0},{110,0}}, color={0,0,255}));
-  connect(eXAC1_1.EFD, gENROE.EFD) annotation (Line(points={{1,-20},{6,-20},{6,
-          -12},{16,-12}}, color={0,0,127}));
+    annotation (Line(points={{78,0},{110,0}}, color={0,0,255}));
+  connect(eXAC1_1.EFD, gENROE.EFD) annotation (Line(points={{25,-20},{28,-20},{
+          28,-12},{34,-12}},
+                          color={0,0,127}));
   connect(zero.y, eXAC1_1.VOTHSG)
-    annotation (Line(points={{-43.4,-16},{-21,-16}}, color={0,0,127}));
-  connect(gENROE.XADIFD, eXAC1_1.XADIFD) annotation (Line(points={{62,-18},{68,
-          -18},{68,-38},{-2,-38},{-2,-31}}, color={0,0,127}));
-  connect(gENROE.EFD0, eXAC1_1.EFD0) annotation (Line(points={{62,-10},{74,-10},
-          {74,-44},{-26,-44},{-26,-24},{-21,-24}}, color={0,0,127}));
-  connect(gENROE.ETERM, eXAC1_1.ECOMP) annotation (Line(points={{62,-6},{80,-6},
-          {80,-50},{-32,-50},{-32,-20},{-21,-20}}, color={0,0,127}));
+    annotation (Line(points={{-13.4,-16},{3,-16}},   color={0,0,127}));
+  connect(gENROE.XADIFD, eXAC1_1.XADIFD) annotation (Line(points={{80,-18},{86,
+          -18},{86,-38},{22,-38},{22,-31}}, color={0,0,127}));
+  connect(gENROE.EFD0, eXAC1_1.EFD0) annotation (Line(points={{80,-10},{90,-10},
+          {90,-42},{0,-42},{0,-24},{3,-24}},       color={0,0,127}));
+  connect(gENROE.ETERM, eXAC1_1.ECOMP) annotation (Line(points={{80,-6},{94,-6},
+          {94,-46},{-4,-46},{-4,-20},{3,-20}},     color={0,0,127}));
   connect(gAST.PMECH, gENROE.PMECH)
-    annotation (Line(points={{1,12},{16,12}}, color={0,0,127}));
-  connect(gAST.SPEED, gENROE.SPEED) annotation (Line(points={{-18,18},{-26,18},
-          {-26,32},{68,32},{68,14},{62,14}}, color={0,0,127}));
-  connect(gAST.PMECH0, gENROE.PMECH0) annotation (Line(points={{-18,6},{-32,6},
-          {-32,38},{74,38},{74,10},{62,10}}, color={0,0,127}));
-  connect(eXAC1_1.VUEL, eXAC1_1.VOTHSG) annotation (Line(points={{-14,-31},{-14,
-          -36},{-38,-36},{-38,-16},{-21,-16}}, color={0,0,127}));
-  connect(eXAC1_1.VOEL, eXAC1_1.VOTHSG) annotation (Line(points={{-10,-31},{-10,
-          -36},{-38,-36},{-38,-16},{-21,-16}}, color={0,0,127}));
+    annotation (Line(points={{25,12},{34,12}},color={0,0,127}));
+  connect(gAST.SPEED, gENROE.SPEED) annotation (Line(points={{6,18},{0,18},{0,
+          32},{86,32},{86,14},{80,14}},      color={0,0,127}));
+  connect(gAST.PMECH0, gENROE.PMECH0) annotation (Line(points={{6,6},{-4,6},{-4,
+          36},{90,36},{90,10},{80,10}},      color={0,0,127}));
+  connect(eXAC1_1.VUEL, eXAC1_1.VOTHSG) annotation (Line(points={{10,-31},{10,
+          -36},{-8,-36},{-8,-16},{3,-16}},     color={0,0,127}));
+  connect(eXAC1_1.VOEL, eXAC1_1.VOTHSG) annotation (Line(points={{14,-31},{14,
+          -36},{-8,-36},{-8,-16},{3,-16}},     color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                                    Diagram(coordinateSystem(preserveAspectRatio=
            false)));

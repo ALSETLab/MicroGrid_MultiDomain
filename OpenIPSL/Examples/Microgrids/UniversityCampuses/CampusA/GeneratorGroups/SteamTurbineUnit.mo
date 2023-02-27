@@ -22,11 +22,11 @@ model SteamTurbineUnit
     S12=0.3,
     R_a=0.01,
     Xpq=0.5,
-    Tpq0=0.75) annotation (Placement(transformation(extent={{20,-20},{60,20}})));
+    Tpq0=0.75) annotation (Placement(transformation(extent={{38,-20},{78,20}})));
   Modelica.Blocks.Sources.Constant zero(k=0) annotation (Placement(transformation(
         extent={{6,6},{-6,-6}},
         rotation=180,
-        origin={-66,-16})));
+        origin={-22,-16})));
   Electrical.Controls.PSSE.ES.EXST1 eXST1_1(
     V_IMAX=1,
     V_IMIN=-1,
@@ -38,7 +38,7 @@ model SteamTurbineUnit
     V_RMIN=-4,
     K_C=0.04,
     K_F=0.02,
-    T_F=1) annotation (Placement(transformation(extent={{-20,-30},{0,-10}})));
+    T_F=1) annotation (Placement(transformation(extent={{4,-30},{24,-10}})));
   Electrical.Controls.PSSE.TG.TGOV1 tGOV1_1(
     R=0.05,
     D_t=0,
@@ -46,30 +46,31 @@ model SteamTurbineUnit
     T_2=2.1,
     T_3=7,
     V_MAX=1,
-    V_MIN=0) annotation (Placement(transformation(extent={{-20,2},{0,22}})));
+    V_MIN=0) annotation (Placement(transformation(extent={{4,2},{24,22}})));
 equation
   connect(gENROE.p, pwPin)
-    annotation (Line(points={{60,0},{110,0}}, color={0,0,255}));
-  connect(eXST1_1.EFD, gENROE.EFD) annotation (Line(points={{1,-20},{6,-20},{6,
-          -12},{16,-12}}, color={0,0,127}));
+    annotation (Line(points={{78,0},{110,0}}, color={0,0,255}));
+  connect(eXST1_1.EFD, gENROE.EFD) annotation (Line(points={{25,-20},{28,-20},{
+          28,-12},{34,-12}},
+                          color={0,0,127}));
   connect(zero.y, eXST1_1.VOTHSG)
-    annotation (Line(points={{-59.4,-16},{-21,-16}}, color={0,0,127}));
-  connect(gENROE.EFD0, eXST1_1.EFD0) annotation (Line(points={{62,-10},{74,-10},
-          {74,-46},{-28,-46},{-28,-24},{-21,-24}}, color={0,0,127}));
-  connect(eXST1_1.ECOMP, gENROE.ETERM) annotation (Line(points={{-21,-20},{-34,
-          -20},{-34,-52},{80,-52},{80,-6},{62,-6}}, color={0,0,127}));
-  connect(eXST1_1.VUEL, eXST1_1.VOTHSG) annotation (Line(points={{-14,-31},{-14,
-          -36},{-48,-36},{-48,-16},{-21,-16}}, color={0,0,127}));
-  connect(eXST1_1.VOEL, eXST1_1.VOTHSG) annotation (Line(points={{-10,-31},{-10,
-          -40},{-48,-40},{-48,-16},{-21,-16}}, color={0,0,127}));
-  connect(eXST1_1.XADIFD, gENROE.XADIFD) annotation (Line(points={{-2,-31},{-2,
-          -36},{68,-36},{68,-18},{62,-18}}, color={0,0,127}));
+    annotation (Line(points={{-15.4,-16},{3,-16}},   color={0,0,127}));
+  connect(gENROE.EFD0, eXST1_1.EFD0) annotation (Line(points={{80,-10},{90,-10},
+          {90,-40},{-2,-40},{-2,-24},{3,-24}},     color={0,0,127}));
+  connect(eXST1_1.ECOMP, gENROE.ETERM) annotation (Line(points={{3,-20},{-6,-20},
+          {-6,-44},{94,-44},{94,-6},{80,-6}},       color={0,0,127}));
+  connect(eXST1_1.VUEL, eXST1_1.VOTHSG) annotation (Line(points={{10,-31},{10,
+          -36},{-10,-36},{-10,-16},{3,-16}},   color={0,0,127}));
+  connect(eXST1_1.XADIFD, gENROE.XADIFD) annotation (Line(points={{22,-31},{22,
+          -36},{86,-36},{86,-18},{80,-18}}, color={0,0,127}));
   connect(tGOV1_1.PMECH, gENROE.PMECH)
-    annotation (Line(points={{1,12},{16,12}}, color={0,0,127}));
-  connect(tGOV1_1.SPEED, gENROE.SPEED) annotation (Line(points={{-18,18},{-28,
-          18},{-28,34},{68,34},{68,14},{62,14}}, color={0,0,127}));
-  connect(tGOV1_1.PMECH0, gENROE.PMECH0) annotation (Line(points={{-18,6},{-34,
-          6},{-34,40},{74,40},{74,10},{62,10}}, color={0,0,127}));
+    annotation (Line(points={{25,12},{34,12}},color={0,0,127}));
+  connect(tGOV1_1.SPEED, gENROE.SPEED) annotation (Line(points={{6,18},{0,18},{
+          0,32},{86,32},{86,14},{80,14}},        color={0,0,127}));
+  connect(tGOV1_1.PMECH0, gENROE.PMECH0) annotation (Line(points={{6,6},{-4,6},
+          {-4,36},{90,36},{90,10},{80,10}},     color={0,0,127}));
+  connect(eXST1_1.VOEL, eXST1_1.VOTHSG) annotation (Line(points={{14,-31},{14,
+          -36},{-10,-36},{-10,-16},{3,-16}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end SteamTurbineUnit;
